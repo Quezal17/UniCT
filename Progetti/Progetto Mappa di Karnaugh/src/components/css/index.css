@@ -1,0 +1,51 @@
+body {
+  background-color: #fff3e6;
+}
+
+#root {
+  position: relative;
+}
+
+.bodyPage {
+  position: relative;
+  display: block;
+  left: 8%;
+  top: 50px;
+  width: 1620px;
+  min-height: 100%;
+}
+
+.title {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #ccc;
+  text-align: center;
+  width: 800px;
+  left: 26%;
+  border-radius: 10px;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #root {
+    zoom: 0.7;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #root {
+    zoom: 0.4;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #root {
+    zoom: 0.5;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  #root {
+    zoom: 0.3;
+  }
+}

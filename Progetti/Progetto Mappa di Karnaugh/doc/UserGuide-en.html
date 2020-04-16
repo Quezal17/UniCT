@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Karnaugh maps solver User Guide, version 1.0</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        .header {
+            font-family: 'Ubuntu', sans-serif;
+            text-align: center;
+        }
+
+        .sectionHeader {
+            font-family: 'Ubuntu', sans-serif;
+            margin-left: 30px;
+        }
+
+        p {
+            font-family: 'Ubuntu', sans-serif;
+            margin: 0px 30px;
+        }
+
+        img {
+            width: 1024px;
+            height: 540px;
+            margin-left: 30px;
+        }
+
+        li {
+            font-family: 'Ubuntu', sans-serif;
+            margin-left: 30px;
+        }
+
+        a {
+            font-family: 'Ubuntu', sans-serif;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../index-en.html">◄ Home</a><br>
+    <h1 class="header">Karnaugh maps solver<br>User Guide</h1>
+    <h3 class="sectionHeader">Introduction</h3>
+
+    <p><em>Karnaugh maps solver</em> is a web app that takes the truth table of a function as input,
+        it transposes it onto the respective Karnaugh map and finds the minimum forms SOP and POS according to the
+        visual resolution method
+        visual by Maurice Karnaugh, American physicist and mathematician.</p>
+    <p>The program is presented as a web app, therefore executable on most of the internet browsers.</p>
+    <p>For more information, check the <a href="Installation-en.html" target="_blank">Installation Notes</a> file.</p>
+
+    <h3 class="sectionHeader">Interface and utilization</h3>
+    <p>The software interface consists of a single main screen, in which all actions can be performed.</p>
+    <p>It is divided into:</p>
+    <ul>
+        <li>Truth table, where it is possible, for each row, assign a value between 0.1 and X, which will be reported
+            on the map.</li>
+        <li>Map of Karnaugh, where for each cell, it is possible to modify the internal values between 0, 1 and X,
+            synchronously with the truth table.
+            It will display the groups formed by the calculation of the solution.</li>
+        <li>Selection menu, where you can choose which type of map to display (2, 3 or 4 variables), choose between SOP
+            and POS form, fill the entire map with 0, 1 or X,
+            process the solution according to the chosen criteria.</li>
+        <li>At the bottom of the page the solution will appear, identified by the colored groups that are the same of
+            group colors in the map.</li>
+    </ul>
+    <h3 class="sectionHeader">Program functioning</h3>
+    <p>It is possible to select to assign the values between 0, 1 and X to every single combination of input both in
+        the truth table and on the map.
+        The table and the map will be synchronized with each other, so that the user is free to choose his own method
+        of input.</p>
+    <br><img src="html/img/1.jpg" alt="The image shows the synchronized table and map"><br><br>
+    <p>You can click the button <strong>Elabora</strong> when the criteria are set in the setup menu on the right side
+        of the page.</p>
+    <br><img src="html/img/2.jpg" alt="The image shows the menu of choice"><br><br>
+    <p>The solution will be obtained divided into colored groups, that identifies the solution for each corresponding
+        group drawn on the map.</p>
+    <br><img src="html/img/3.jpg" alt="The image shows the solution shown below and on the map">
+</body>
+
+</html>
