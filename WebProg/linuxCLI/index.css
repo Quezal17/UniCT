@@ -1,0 +1,69 @@
+
+#terminale {
+    display: inline-block;
+    width: 800px;
+    height: 500px;
+    font-family: sans-serif !important;
+}
+
+#shell-header {
+    background-color: #c6c6c6;
+    height: 30px;
+    text-align: center;
+    color: #000000;
+}
+
+#shell-header:active {
+    cursor: grabbing;
+}
+
+#shell {
+    background-color: #424242;
+    font-size: 18px;
+    color: #ffffff;
+    height: calc(100% - 30px);
+    padding: 0 5px;
+    overflow-y: auto;
+}
+
+.green-text {
+    color: #32cb00;
+}
+
+.blue-text {
+    color: #1e88e5;
+}
+
+.red-text {
+    color: #ff0000 ;
+}
+
+.command-line {
+    margin: 5px 0;
+}
+
+.user-part {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.text-part {
+    display: inline-block;
+}
+
+.input-command {
+    display: inline-block;
+    color: #ffffff !important;
+    background-color: #424242 !important;
+    font-size: 18px !important;
+    font-family: sans-serif !important;
+    border: hidden !important;
+}
+
+.input-command:focus {
+   outline: none !important;
+}
+
+.response p {
+    margin: 5px 0;
+}
