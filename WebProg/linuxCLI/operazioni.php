@@ -1,4 +1,5 @@
 <?php
+if($_SERVER["REQUEST_METHOD"] == "GET") {
 $x = $_GET['x'];
 $y = $_GET['y'];
 $op = $_GET['op'];
@@ -30,6 +31,6 @@ if(is_numeric($x) && is_numeric($y)) {
     echo "</p>";
 }else
     echo "<p><span class='red-text'>Errore</span>: i parametri inseriti non sono numeri validi</p>";
-
+}
 ?>
 
