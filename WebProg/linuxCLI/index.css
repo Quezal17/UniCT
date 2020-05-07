@@ -1,23 +1,23 @@
 
-#terminale {
+.terminale {
     display: inline-block;
     width: 800px;
     height: 500px;
     font-family: sans-serif !important;
 }
 
-#shell-header {
+.shell-header {
     background-color: #c6c6c6;
     height: 30px;
     text-align: center;
     color: #000000;
 }
 
-#shell-header:active {
+.shell-header:active {
     cursor: grabbing;
 }
 
-#shell {
+.shell {
     background-color: #424242;
     font-size: 18px;
     color: #ffffff;
@@ -38,20 +38,20 @@
     color: #ff0000 ;
 }
 
-.command-line {
+.shell .command-line {
     margin: 5px 0;
 }
 
-.user-part {
+.command-line .user-part {
     display: inline-block;
     margin-right: 10px;
 }
 
-.text-part {
+.command-line .text-part {
     display: inline-block;
 }
 
-.input-command {
+.text-part .input-command {
     display: inline-block;
     color: #ffffff !important;
     background-color: #424242 !important;
@@ -60,10 +60,10 @@
     border: hidden !important;
 }
 
-.input-command:focus {
+.text-part .input-command:focus {
    outline: none !important;
 }
 
-.response p {
+.shell .response p {
     margin: 5px 0;
 }

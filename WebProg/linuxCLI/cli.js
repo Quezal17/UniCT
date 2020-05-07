@@ -38,7 +38,7 @@ $(document).ready(function () {
         },
         "clear": function (parametro) {
             if (parametro === "") {
-                $('#shell').html("");
+                $('.shell').html("");
                 currentIndex = -1;
                 return "";
             }
@@ -92,13 +92,13 @@ $(document).ready(function () {
     }
 
     function createResponse(response) {
-        $('#shell').append(`
+        $('.shell').append(`
             <div id="response`+ currentIndex + `" class="response">` + response + `</div>
         `);
     }
 
     function createCommandLine() {
-        $('#shell').append(`
+        $('.shell').append(`
             <div class="command-line">
                 <div class="user-part"><span class="green-text">simone@simonePC</span>:<span class="blue-text">`+ directory + `</span>~$</div>
                 <div class="text-part"><input type="text" id="input`+ currentIndex + `" class="input-command"></div>
@@ -118,10 +118,10 @@ $(document).ready(function () {
         });
     }
 
-    $('#terminale').draggable({
-        handle: "#shell-header"
+    $('.terminale').draggable({
+        handle: ".shell-header"
     });
-    $('#terminale').resizable({
+    $('.terminale').resizable({
         minWidth: 300,
         minHeight: 200,
         handles: "all"
