@@ -15,7 +15,15 @@ if(is_numeric($x) && is_numeric($y)) {
             echo "Risultato: " . ($x*$y);
             break;
         case "divisione":
-            echo "Risultato: " . ($x/$y);
+            if($y == 0) {
+                if($x < 0)
+                    echo "Risultato: -∞";
+                else if($x == 0)
+                    echo "Risultato: indeterminato";
+                else if($x > 0)
+                    echo "Risultato: ∞";
+            }else
+                echo "Risultato: " . ($x/$y);
             break;
     }
 }else
