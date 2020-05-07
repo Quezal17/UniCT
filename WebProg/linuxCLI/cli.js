@@ -66,7 +66,7 @@ $(document).ready(function () {
             valori = valori.trim().split(' ');
             if (valori.length === 2) {
                 $.get("operazioni.php", {x:valori[0], y:valori[1], op:nome}, function(risultato) {
-                    $('#response'+index).append(`<p>`+ risultato + `</p>`);
+                    $('#response'+index).append(risultato);
                 });
                 return "";
             }
