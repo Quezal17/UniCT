@@ -5,32 +5,35 @@ $y = $_GET['y'];
 $op = $_GET['op'];
 
 if(is_numeric($x) && is_numeric($y)) {
-    echo "<p>Risultato: ";
+    $result="Result: ";
     switch($op) {
-        case "somma":
-            echo ($x+$y);
+        case "+":
+            $result .= strval($x + $y);
             break;
-        case "differenza":
-            echo ($x-$y);
+        case "-":
+            $result .= strval($x - $y);
             break;
-        case "prodotto":
-            echo ($x*$y);
+        case "*":
+            $result .= strval($x * $y);
             break;
-        case "divisione":
+        case "/":
             if($y == 0) {
                 if($x < 0)
-                    echo "-∞";
+                    $result .= "-∞";
                 else if($x == 0)
-                    echo "indeterminato";
+                    $result .= "indeterminato";
                 else if($x > 0)
-                    echo "∞";
+                    $result .= "∞";
             }else
-                echo ($x/$y);
+                $result .= strval($x / $y);
+            break;
+        default:
+            $result = "<span class='red-text'>Errore</span>: Operando sconosciuto";
             break;
     }
-    echo "</p>";
+    echo $result;
 }else
-    echo "<p><span class='red-text'>Errore</span>: i parametri inseriti non sono numeri validi</p>";
+    echo "<span class='red-text'>Errore</span>: i parametri inseriti non sono numeri validi";
 }
 ?>
 

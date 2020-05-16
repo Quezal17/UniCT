@@ -11,10 +11,7 @@ $(document).ready(function () {
                         <li>echo stringa - Stampa la stringa passata come parametro;</li>
                         <li>cd directory - Cambia directory specificata come parametro;</li>
                         <li>clear - Pulisce la shell;</li>
-                        <li>somma x y - Calcola la somma x + y. I numeri devono essere interi o decimali;</li>
-                        <li>differenza x y - Calcola la differenza x - y. I numeri devono essere interi o decimali;</li>
-                        <li>prodotto x y - Calcola il prodotto x * y. I numeri devono essere interi o decimali;</li>
-                        <li>divisione x y - Calcola la divisione x / y. I numeri devono essere interi o decimali;</li>
+                        <li>calc <num1> [+ | - | * | /] <num2> - Calcola l'operazione data dall'operando;</li>
                     </ul>`;
             return `<p><span class="red-text">Errore</span>: Sintassi errata</p><p>Controlla la sintassi dei comandi digitando il comando help</p>`;
         },
@@ -44,29 +41,20 @@ $(document).ready(function () {
             }
             return `<p><span class="red-text">Errore</span>: Sintassi errata</p><p>Controlla la sintassi dei comandi digitando il comando help</p>`;
         },
-        "somma": function (valori) {
-            return operazione("somma",valori);
-        },
-        "differenza": function (valori) {
-            return operazione("differenza",valori);
-        },
-        "prodotto": function (valori) {
-            return operazione("prodotto",valori);
-        },
-        "divisione": function (valori) {
-            return operazione("divisione",valori);
+        "calc": function (valori) {
+            return operazione(valori);
         }
     }
 
 
     // FUNZIONI
 
-    function operazione(nome, valori) {
-        let index = currentIndex;
+    function operazione(valori) {
+            let index = currentIndex;
             valori = valori.trim().split(' ');
-            if (valori.length === 2) {
-                $.get("../php/operazioni.php", {x:valori[0], y:valori[1], op:nome}, function(risultato) {
-                    $('#response'+index).append(risultato);
+            if (valori.length === 3) {
+                $.get("../php/operazioni.php", {x:valori[0], op:valori[1], y:valori[2]}, function(risultato) {
+                    $('#response'+index).append(`<p>`+risultato+`</p>`);
                     $(".shell").scrollTop($('.shell').prop("scrollHeight"));
                 });
                 return "";
