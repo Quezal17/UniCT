@@ -1,6 +1,6 @@
-$(document).ready(function () {
+function startCli(classe,currentIndexTerminal) {
 
-    let currentIndex = 0;
+    let currentIndexInput = 0;
     let directory = "";
     let commandList = {
         "help": function (parametro) {
@@ -35,8 +35,8 @@ $(document).ready(function () {
         },
         "clear": function (parametro) {
             if (parametro === "") {
-                $('.shell').html("");
-                currentIndex = -1;
+                $(classe+currentIndexTerminal+' .shell').html("");
+                currentIndexInput = -1;
                 return "";
             }
             return `<p><span class="red-text">Errore</span>: Sintassi errata</p><p>Controlla la sintassi dei comandi digitando il comando help</p>`;
@@ -50,12 +50,12 @@ $(document).ready(function () {
     // FUNZIONI
 
     function operazione(valori) {
-            let index = currentIndex;
+            let index = currentIndexInput;
             valori = valori.trim().split(' ');
             if (valori.length === 3) {
                 $.get("../php/operazioni.php", {x:valori[0], op:valori[1], y:valori[2]}, function(risultato) {
-                    $('#response'+index).append(`<p>`+risultato+`</p>`);
-                    $(".shell").scrollTop($('.shell').prop("scrollHeight"));
+                    $(classe+currentIndexTerminal+' #response'+index).append(`<p>`+risultato+`</p>`);
+                    $(classe+currentIndexTerminal+" .shell").scrollTop($(classe+currentIndexTerminal+' .shell').prop("scrollHeight"));
                 });
                 return "";
             }
@@ -81,39 +81,31 @@ $(document).ready(function () {
     }
 
     function createResponse(response) {
-        $('.shell').append(`
-            <div id="response`+ currentIndex + `" class="response">` + response + `</div>
+        $(classe+currentIndexTerminal+' .shell').append(`
+            <div id="response`+ currentIndexInput + `" class="response">` + response + `</div>
         `);
     }
 
     function createCommandLine() {
-        $('.shell').append(`
+        $(classe+currentIndexTerminal+' .shell').append(`
             <div class="command-line">
                 <div class="user-part"><span class="green-text">simone@simonePC</span>:<span class="blue-text">`+ directory + `</span>~$</div>
-                <div class="text-part"><input type="text" id="input`+ currentIndex + `" class="input-command"></div>
+                <div class="text-part"><input type="text" id="input`+ currentIndexInput + `" class="input-command"></div>
             </div>
         `);
 
-        $('#input' + currentIndex).focus();
+        $(classe+currentIndexTerminal+' #input' + currentIndexInput).focus();
 
-        $('#input' + currentIndex).keypress(function (event) {
+        $(classe+currentIndexTerminal+' #input' + currentIndexInput).keypress(function (event) {
             if (event.which == 13) {
-                let inputCommand = $('#input' + currentIndex);
+                let inputCommand = $(classe+currentIndexTerminal+' #input' + currentIndexInput);
                 inputCommand.prop("disabled", true);
                 createResponse(checkCommand(inputCommand.val().trim()));
-                currentIndex++;
+                currentIndexInput++;
                 createCommandLine();
             }
         });
     }
 
-    $('.terminale').draggable({
-        handle: ".shell-header"
-    });
-    $('.terminale').resizable({
-        minWidth: 300,
-        minHeight: 200,
-        handles: "all"
-    });
     createCommandLine();
-})
+}

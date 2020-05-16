@@ -1,0 +1,41 @@
+.cli-icon {
+    background-image: url('../img/terminal-icon.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.shell {
+    background-color: #424242;
+    color: #ffffff;
+}
+
+.shell .command-line {
+    margin: 5px 0;
+}
+
+.command-line .user-part {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.command-line .text-part {
+    display: inline-block;
+}
+
+.text-part .input-command {
+    display: inline-block;
+    color: #ffffff !important;
+    background-color: #424242 !important;
+    font-size: 18px !important;
+    font-family: sans-serif !important;
+    border: hidden !important;
+}
+
+.text-part .input-command:focus {
+   outline: none !important;
+}
+
+.shell .response p {
+    margin: 5px 0;
+}
