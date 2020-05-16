@@ -65,8 +65,9 @@ $(document).ready(function () {
         let index = currentIndex;
             valori = valori.trim().split(' ');
             if (valori.length === 2) {
-                $.get("operazioni.php", {x:valori[0], y:valori[1], op:nome}, function(risultato) {
+                $.get("../php/operazioni.php", {x:valori[0], y:valori[1], op:nome}, function(risultato) {
                     $('#response'+index).append(risultato);
+                    $(".shell").scrollTop($('.shell').prop("scrollHeight"));
                 });
                 return "";
             }
