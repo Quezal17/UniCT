@@ -29,16 +29,23 @@ $(document).ready(function() {
                 <div class="window-content shell"></div>
             </div>
         `);
+        // close window
         $('.'+appName+index+' .icon-x-close').on('click',function(){
             $(this).parent().parent().remove();
         });
+
+        // window focus
         $('.'+appName+index).click(function() {
             $(".window").css("z-index", "10");
             $(this).css("z-index", "20");
-          })
-        /*$('.'+classe+index).draggable({
-            handle: '.'+classe+index+" window-head"
-        });*/
+        });
+
+        // window draggable
+        $('.'+appName+index).draggable({
+            handle: '.window-head'
+        });
+
+        //window resizable
         $('.'+appName+index).resizable({
             minWidth: 300,
             minHeight: 200,
