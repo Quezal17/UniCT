@@ -4,3 +4,19 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.progress-bar {
+    height: 18px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.progress-bar .bar {
+    display: inline-block;
+    border-radius: 10px;
+    height: 18px;
+    width: 0;
+    background-color: #00ff00;
+}

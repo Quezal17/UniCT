@@ -51,6 +51,7 @@
     height: calc(100% - 30px);
     padding: 0 5px;
     overflow-y: auto;
+    background-color: #ffffff;
 }
 
 .icon {

@@ -1,4 +1,4 @@
-function startCli(classe,currentIndexTerminal) {
+function startCli(appName,currentIndexWindow) {
 
     let currentIndexInput = 0;
     let directory = "";
@@ -35,7 +35,7 @@ function startCli(classe,currentIndexTerminal) {
         },
         "clear": function (parametro) {
             if (parametro === "") {
-                $(classe+currentIndexTerminal+' .shell').html("");
+                $(appName+currentIndexWindow+' .window-content').html("");
                 currentIndexInput = -1;
                 return "";
             }
@@ -54,8 +54,8 @@ function startCli(classe,currentIndexTerminal) {
             valori = valori.trim().split(' ');
             if (valori.length === 3) {
                 $.get("../php/operazioni.php", {x:valori[0], op:valori[1], y:valori[2]}, function(risultato) {
-                    $(classe+currentIndexTerminal+' #response'+index).append(`<p>`+risultato+`</p>`);
-                    $(classe+currentIndexTerminal+" .shell").scrollTop($(classe+currentIndexTerminal+' .shell').prop("scrollHeight"));
+                    $(appName+currentIndexWindow+' #response'+index).append(`<p>`+risultato+`</p>`);
+                    $(appName+currentIndexWindow+' .window-content').scrollTop($(appName+currentIndexWindow+' .window-content').prop("scrollHeight"));
                 });
                 return "";
             }
@@ -81,24 +81,24 @@ function startCli(classe,currentIndexTerminal) {
     }
 
     function createResponse(response) {
-        $(classe+currentIndexTerminal+' .shell').append(`
+        $(appName+currentIndexWindow+' .window-content').append(`
             <div id="response`+ currentIndexInput + `" class="response">` + response + `</div>
         `);
     }
 
     function createCommandLine() {
-        $(classe+currentIndexTerminal+' .shell').append(`
+        $(appName+currentIndexWindow+' .window-content').append(`
             <div class="command-line">
                 <div class="user-part"><span class="green-text">simone@simonePC</span>:<span class="blue-text">`+ directory + `</span>~$</div>
                 <div class="text-part"><input type="text" id="input`+ currentIndexInput + `" class="input-command"></div>
             </div>
         `);
 
-        $(classe+currentIndexTerminal+' #input' + currentIndexInput).focus();
+        $(appName+currentIndexWindow+' #input' + currentIndexInput).focus();
 
-        $(classe+currentIndexTerminal+' #input' + currentIndexInput).keypress(function (event) {
+        $(appName+currentIndexWindow+' #input' + currentIndexInput).keypress(function (event) {
             if (event.which == 13) {
-                let inputCommand = $(classe+currentIndexTerminal+' #input' + currentIndexInput);
+                let inputCommand = $(appName+currentIndexWindow+' #input' + currentIndexInput);
                 inputCommand.prop("disabled", true);
                 createResponse(checkCommand(inputCommand.val().trim()));
                 currentIndexInput++;
@@ -107,5 +107,8 @@ function startCli(classe,currentIndexTerminal) {
         });
     }
 
+    //setting window title
+    $(appName+currentIndexWindow+' .window-head span').text("simone@simonePC");
+    $(appName+currentIndexWindow+' .window-content').addClass("shell");
     createCommandLine();
 }

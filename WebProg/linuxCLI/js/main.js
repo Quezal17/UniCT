@@ -5,28 +5,30 @@ $(document).ready(function() {
         "upload": 0
     };
 
-    var iconList = ["cli"];
-    var appList = ["terminal"];
+    var appList = ["terminal","upload"];
 
     function getNextIndex(app) {
         switch(app) {
             case "terminal":
                 indexes.terminal += 1;
                 return indexes.terminal;
+            case "upload":
+                indexes.upload += 1;
+                return indexes.upload;
             default:
                 break;
         }
     }
 
 
-    function printWindow(appName, index, title) {
+    function printWindow(appName, index) {
         $('#desktop').append(`
             <div class="window `+appName+index+`">
                 <div class="window-head">
-                    <span>`+title+`</span>
+                    <span></span>
                     <div class="icon-x-close">X</div>
                 </div>
-                <div class="window-content shell"></div>
+                <div class="window-content"></div>
             </div>
         `);
         // close window
@@ -56,6 +58,9 @@ $(document).ready(function() {
             case "terminal":
                 startCli("."+appName,index);
                 break;
+            case "upload":
+                startUpload(appName,index);
+                break;
             default:
                 break;
         }
@@ -63,20 +68,18 @@ $(document).ready(function() {
 
     //PRINT ICONS
     function printIcons() {
-        for(let i=0; i<iconList.length; i++) {
+        for(let i=0; i<appList.length; i++) {
             $('#desktop').append(`
-                <div class="icon `+iconList[i]+`-icon"></div>
+                <div class="icon `+appList[i]+`-icon"></div>
             `);
-            $(`.`+iconList[i]+'-icon').draggable({
-                handle: `.`+iconList[i]+'-icon'
-            });
+            $('.'+appList[i]+'-icon').draggable();
         }
     }
 
     // ICON LISTENERS
     function addIconListeners() {
         for(let i=0; i<appList.length; i++) {
-            $(`.`+iconList[i]+'-icon').dblclick(function() {printWindow(appList[i],getNextIndex(appList[i]),"simone@simonePC")});
+            $(`.`+appList[i]+'-icon').dblclick(function() {printWindow(appList[i],getNextIndex(appList[i]))});
         }
     }
 
