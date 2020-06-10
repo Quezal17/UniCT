@@ -2,10 +2,11 @@ $(document).ready(function() {
 
     var indexes = {
         "terminal": 0,
-        "upload": 0
+        "upload": 0,
+        "serverstat": 0
     };
 
-    var appList = ["terminal","upload"];
+    var appList = ["terminal","upload","serverstat"];
 
     function getNextIndex(app) {
         switch(app) {
@@ -15,6 +16,9 @@ $(document).ready(function() {
             case "upload":
                 indexes.upload += 1;
                 return indexes.upload;
+            case "serverstat":
+                indexes.serverstat += 1;
+                return indexes.serverstat;
             default:
                 break;
         }
@@ -61,6 +65,9 @@ $(document).ready(function() {
             case "upload":
                 startUpload(appName,index);
                 break;
+            case "serverstat":
+                startServerStat(appName,index);
+                break;
             default:
                 break;
         }
@@ -85,7 +92,6 @@ $(document).ready(function() {
 
     printIcons();
     addIconListeners();
-    
 })
 
 /*
